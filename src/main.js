@@ -20,7 +20,7 @@ const main = () => {
     console.log(`Separator    : ${separator}`);
     console.log(`Limit        : ${limit}`);
 
-    let parts = command.split(separator, limit);
+    let parts = command.split(" ", limit);
 
     parts.forEach((part, index) => {
       core.setOutput(`_${index}`, part);
