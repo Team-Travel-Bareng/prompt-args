@@ -27,6 +27,7 @@ const main = () => {
     });
 
     core.setOutput('length', parts.length);
+    core.setOutput('separator', separator);
   } catch (error) {
     core.setFailed(error.message);
   }
