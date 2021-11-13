@@ -13,7 +13,7 @@ const main = () => {
     // }
 
     let command = core.getInput('string');
-    let separator = ' ';
+    let separator = 'hehehe';
     let limit = parseInt(core.getInput('limit'), 10);
 
     console.log(`Input string : ${command}`);
