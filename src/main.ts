@@ -21,6 +21,13 @@ const main = () => {
 
     const parts = command.split(separator, limit);
 
+    const result = {
+      job: parts[1] || 'build',
+      environment: parts[2] || 'staging',
+    }
+
+    core.setOutput('result', result);
+
     // core.setOutput('', parts[0])
     core.setOutput('job', parts[1] || 'build');
     core.setOutput('environment', parts[2] || 'staging');
