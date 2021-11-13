@@ -22,9 +22,9 @@ const main = () => {
     const parts = command.split(separator, limit);
 
     // core.setOutput('', parts[0])
-    core.setOutput('job', parts[1]);
-    core.setOutput('environment', parts[2]);
-    core.setOutput('config', parts[3]);
+    core.setOutput('job', parts[1] || 'build');
+    core.setOutput('environment', parts[2] || 'staging');
+    core.setOutput('config', parts[3] || 'app');
     core.setOutput('length', parts.length);
     core.setOutput('separator', separator);
   } catch (error) {
