@@ -21,10 +21,10 @@ const main = () => {
 
     const parts = command.split(separator, limit);
 
-    parts.forEach((part, index) => {
-      core.setOutput(`_${index}`, part);
-    });
-
+    // core.setOutput('', parts[0])
+    core.setOutput('job', parts[1]);
+    core.setOutput('environment', parts[2]);
+    core.setOutput('config', parts[3]);
     core.setOutput('length', parts.length);
     core.setOutput('separator', separator);
   } catch (error) {
