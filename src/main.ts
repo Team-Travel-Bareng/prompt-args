@@ -4,12 +4,12 @@ const main = () => {
   try {
     const splitFlag = (flag) => {
       const result = flag.split('=');
-      
+
       return {
         flag: result[0],
-        value: result[1]
-      }
-    }
+        value: result[1],
+      };
+    };
 
     // const command = core.getInput('comment');
     // const limit = parseInt(core.getInput('limit'), 10);
@@ -18,14 +18,14 @@ const main = () => {
     const limit = -1;
 
     const parts = command.split(separator, limit);
-    
+
     const result = {
       job: parts[0] || 'build',
       environment: splitFlag(parts[1]),
       config: splitFlag(parts[2]),
     };
 
-    console.log(result)
+    console.log(result);
 
     core.setOutput('result', result);
 
@@ -38,8 +38,6 @@ const main = () => {
   } catch (error) {
     core.setFailed(error.message);
   }
-
 };
 
 main();
-
