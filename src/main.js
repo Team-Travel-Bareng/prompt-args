@@ -19,7 +19,7 @@ const main = () => {
     // let command = 'apply file --env=prod --tags=a --address=10';
     // let command = 'ghtoped apply --env=prod file';
     // let limit = parseInt(core.getInput('limit'), 10);
-    // let command = 'ghtoped apply --address=20';
+    // let command = 'ghtoped apply --address=20 redisapp.yaml';
 
     const ENV_DEFAULT = 'prod';
     const TAGS_DEFAULT = 'test';
@@ -42,9 +42,12 @@ const main = () => {
         const value = args[1];
 
         result[flag] = value;
-      } else result[part] = part;
+      } else if (part.includes('.yaml') || part.includes('.yml')) {
+        result['playbook'] = part;
+      }
+      else result[part] = part;
     });
-
+    // console.log(result)
     core.setOutput('result', result);
 
     // core.setOutput('', parts[0])
