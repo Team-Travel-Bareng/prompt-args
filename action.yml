@@ -8,10 +8,6 @@ inputs:
   comment:
     description: Comment to split
     required: true
-  limit:
-    description: Limit on the number of substrings to be included in the array
-    default: '-1'
-    required: false
 outputs:
   result:
     description: Action Result
