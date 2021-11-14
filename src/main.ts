@@ -22,20 +22,19 @@ const main = () => {
 
     const parts = command.split(separator);
 
-    parts.map(part => {
+    parts.map((part) => {
       const temp = {};
-      const args = part.split('=')
+      const args = part.split('=');
 
       if (args.length > 1) {
-        const flag = args[0].slice(2)
-        const value = args[1]
+        const flag = args[0].slice(2);
+        const value = args[1];
 
-        temp[flag] = value
-      }
-      else temp[part] = part
+        temp[flag] = value;
+      } else temp[part] = part;
 
-      console.log(temp);
-    })
+      return temp;
+    });
 
     core.setOutput('result', parts);
 
