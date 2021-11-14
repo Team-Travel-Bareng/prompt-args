@@ -11,13 +11,24 @@ const main = () => {
     //   };
     // };
 
-    const command = core.getInput('comment');
-    // const limit = parseInt(core.getInput('limit'), 10);
-    // build --env=prod --config=app
-    // apply file --env --tags= --limit
-    // const command1 = 'build --env=prod --config=app';
-    // const command2 = 'build --env=prod build-dua --config=app';
-    // const command = 'apply file --env=prod --tags=a --address=10';
+    let command = core.getInput('comment');
+    // let command = 'build --env=prod --config=app'
+    // let command = 'apply file --env --tags= --limit'
+    // let command = 'build --env=prod --config=app';
+    // let command = 'build --env=prod build-dua --config=app';
+    // let command = 'apply file --env=prod --tags=a --address=10';
+    // let command = 'ghtoped apply --env=prod file';
+    // let limit = parseInt(core.getInput('limit'), 10);
+    // let command = 'ghtoped apply --address=20';
+
+    const ENV_DEFAULT = 'prod';
+    const TAGS_DEFAULT = 'test';
+    const ADDRESS_DEFAULT = 10;
+
+    if (!command.includes('--env')) command = `${command} --env=${ENV_DEFAULT}`;
+    if (!command.includes('--tags')) command = `${command} --tags=${TAGS_DEFAULT}`;
+    if (!command.includes('--address')) command = `${command} --address=${ADDRESS_DEFAULT}`;
+
     const separator = ' ';
 
     const parts = command.split(separator);
