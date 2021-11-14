@@ -2,32 +2,42 @@ import * as core from '@actions/core';
 
 const main = () => {
   try {
-    const splitFlag = (flag) => {
-      const result = flag.split('=');
+    // const splitFlag = (flag) => {
+    //   const result = flag.split('=');
 
-      return {
-        flag: result[0],
-        value: result[1],
-      };
-    };
+    //   return {
+    //     flag: result[0],
+    //     value: result[1],
+    //   };
+    // };
 
     // const command = core.getInput('comment');
     // const limit = parseInt(core.getInput('limit'), 10);
-    const command = 'build --env=prod --config=app';
+    // build --env=prod --config=app
+    // apply file --env --tags= --limit
+    // const command1 = 'build --env=prod --config=app';
+    // const command2 = 'build --env=prod build-dua --config=app';
+    const command = 'apply file --env=prod --tags=a --address=10';
     const separator = ' ';
-    const limit = -1;
 
-    const parts = command.split(separator, limit);
+    const parts = command.split(separator);
 
-    const result = {
-      job: parts[0] || 'build',
-      environment: splitFlag(parts[1]),
-      config: splitFlag(parts[2]),
-    };
+    parts.map(part => {
+      const temp = {};
+      const args = part.split('=')
 
-    console.log(result);
+      if (args.length > 1) {
+        const flag = args[0].slice(2)
+        const value = args[1]
 
-    core.setOutput('result', result);
+        temp[flag] = value
+      }
+      else temp[part] = part
+
+      console.log(temp);
+    })
+
+    core.setOutput('result', parts);
 
     // core.setOutput('', parts[0])
     // core.setOutput('job', parts[1] || 'build');
