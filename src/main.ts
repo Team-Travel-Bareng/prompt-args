@@ -11,13 +11,13 @@ const main = () => {
     //   };
     // };
 
-    // const command = core.getInput('comment');
+    const command = core.getInput('comment');
     // const limit = parseInt(core.getInput('limit'), 10);
     // build --env=prod --config=app
     // apply file --env --tags= --limit
     // const command1 = 'build --env=prod --config=app';
     // const command2 = 'build --env=prod build-dua --config=app';
-    const command = 'apply file --env=prod --tags=a --address=10';
+    // const command = 'apply file --env=prod --tags=a --address=10';
     const separator = ' ';
 
     const parts = command.split(separator);
