@@ -21,22 +21,20 @@ const main = () => {
     const separator = ' ';
 
     const parts = command.split(separator);
+    const result = {};
 
-    parts.map((part) => {
-      const temp = {};
+    parts.forEach((part) => {
       const args = part.split('=');
 
       if (args.length > 1) {
         const flag = args[0].slice(2);
         const value = args[1];
 
-        temp[flag] = value;
-      } else temp[part] = part;
-
-      return temp;
+        result[flag] = value;
+      } else result[part] = part;
     });
 
-    core.setOutput('result', parts);
+    core.setOutput('result', result);
 
     // core.setOutput('', parts[0])
     // core.setOutput('job', parts[1] || 'build');
